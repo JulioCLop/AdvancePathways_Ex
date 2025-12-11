@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advance Pathways | Social Feed</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="juicer-embed.css" media="all">
+  <style>
+    @layer ap-juicer {
+    #ap-juicer-wrapper {
+      --ink: #eef4fb;
+      --muted: #d4deed;
+      --card-bg: #0b1f35;
+      --shadow: 0 26px 52px rgba(13, 35, 72, 0.35);
+      --radius: 22px;
+      --brand-blue: #1c5bbf;
+      --brand-gold: #f6c343;
+    }
+
+    #ap-juicer-wrapper * { box-sizing: border-box; }
+
+    #ap-juicer-wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 48px 16px 72px;
+      background: radial-gradient(circle at 20% 20%, rgba(28, 91, 191, 0.12), transparent 38%), radial-gradient(circle at 80% 18%, rgba(246, 195, 67, 0.16), transparent 32%);
+      border-radius: 28px;
+    }
+
+    #ap-juicer-wrapper .linked-in-header {
+      text-align: center;
+      font-size: clamp(1.7rem, 1vw + 1.4rem, 2.4rem);
+      font-weight: 800;
+      margin: 0 0 18px;
+      letter-spacing: -0.02em;
+      color: #10356b;
+    }
+
+    /* Grid */
+    #ap-juicer-wrapper .juicer-feed .j-stacker-wrapper,
+    #ap-juicer-wrapper .juicer-feed .j-stacker {
+      margin: 0 !important;
+      padding: 15px 15px !important;
+      width: 100% !important;
+    }
+
+    #ap-juicer-wrapper .juicer-feed .j-stack,
+    #ap-juicer-wrapper .juicer-feed ul[class^="j-column"],
+    #ap-juicer-wrapper .juicer-feed .galcolumn {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 18px !important;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      width: 100% !important;
+      box-sizing: border-box;
+    }
+    #ap-juicer-wrapper .juicer-feed .j-stack > li.feed-item,
+    #ap-juicer-wrapper .juicer-feed ul[class^="j-column"] > li.feed-item,
+    #ap-juicer-wrapper .juicer-feed .galcolumn > li.feed-item {
+      flex: 0 0 calc((100% - 36px) / 3);
+      box-sizing: border-box;
+    }
+
+
+    @media (max-width: 1024px) {
+      #ap-juicer-wrapper .juicer-feed .j-stack > li.feed-item,
+      #ap-juicer-wrapper .juicer-feed ul[class^="j-column"] > li.feed-item,
+      #ap-juicer-wrapper .juicer-feed .galcolumn > li.feed-item {
+        flex: 0 0 calc((100% - 18px) / 2);
+      }
+    }
+
+    /* Ensure feed container respects parent overflow without forcing it globally */
+    #ap-juicer-wrapper .juicer-feed {
+      overflow: visible !important;
+    }
+
+    @media (max-width: 640px) {
+      #ap-juicer-wrapper .juicer-feed .j-stack > li.feed-item,
+      #ap-juicer-wrapper .juicer-feed ul[class^="j-column"] > li.feed-item,
+      #ap-juicer-wrapper .juicer-feed .galcolumn > li.feed-item {
+        flex: 0 0 100%;
+      }
+    }
+
+    /* Card */
+    #ap-juicer-wrapper .juicer-feed li.feed-item {
+      position: relative;
+      height: 460px !important;
+      overflow: hidden !important;
+      border-radius: var(--radius);
+      margin: 0 !important;
+      padding: 0 !important;
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      float: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    #ap-juicer-wrapper .juicer-feed li.feed-item a.j-image,
+    #ap-juicer-wrapper .juicer-feed li.feed-item .j-video,
+    #ap-juicer-wrapper .juicer-feed li.feed-item .ap-placeholder {
+      position: absolute;
+      inset: 0;
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      overflow: hidden !important;
+      background: #111827;
+      z-index: 1;
+      isolation: isolate;
+    }
+
+    #ap-juicer-wrapper .juicer-feed li.feed-item a.j-image::after,
+    #ap-juicer-wrapper .juicer-feed li.feed-item .j-video::after,
+    #ap-juicer-wrapper .juicer-feed li.feed-item .ap-placeholder::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 32%, rgba(16,53,107,0.6) 65%, rgba(11,31,53,0.92) 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    #ap-juicer-wrapper .juicer-feed li.feed-item a.j-image img,
+    #ap-juicer-wrapper .juicer-feed li.feed-item .j-video video {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block;
+      filter: saturate(1.05);
+    }
+
+    #ap-juicer-wrapper .juicer-feed li.feed-item .ap-placeholder {
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), transparent 35%), linear-gradient(135deg, #1c5bbf, #0b1f35);
+      color: rgba(255,255,255,0.95);
+      display: block;
+      place-items: center;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    #ap-juicer-wrapper .juicer-feed li.feed-item .j-text {
+      position: absolute;
+      inset: auto 0 0 0;
+      z-index: 3;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px;
+      padding: 22px 20px 18px !important;
+      background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.6) 38%, rgba(0,0,0,0.9) 100%) !important;
+      color: var(--ink) !important;
+      min-height: 220px;
+      max-height: 260px;
+      overflow-y: auto;
+    }
+
+    #ap-juicer-wrapper .juicer-feed li.feed-item .j-message {
+      font-size: 17px !important;
+      line-height: 1.55 !important;
+      color: var(--muted) !important;
+      margin: 0 !important;
+      display: block;
+      overflow: visible;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.28);
+    }
+
+    #ap-juicer-wrapper .juicer-feed li.feed-item .j-message p {
+      margin: 0 0 8px !important;
+      font-weight: 600;
+      font-size: 17px;
+      line-height: 1.4;
+      color: #fefefe;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.45);
+    }
+    #ap-juicer-wrapper .juicer-feed li.feed-item .j-message a {
+      color: #f6c343 !important;
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
+    #ap-juicer-wrapper .juicer-feed li.feed-item .j-message a:hover {
+      color: #ffde78 !important;
+    }
+
+    #ap-juicer-wrapper .juicer-feed li.feed-item .j-meta {
+      margin-top: auto !important;
+      padding-top: 6px !important;
+      font-size: 12px !important;
+      color: #e2e8f0 !important;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      gap: 8px;
+    }
+
+    #ap-juicer-wrapper .juicer-feed li.feed-item .j-meta nav a {
+      width: auto;
+      height: 28px;
+      padding: 0 14px;
+      background: linear-gradient(135deg, rgba(28, 91, 191, 0.22), rgba(246, 195, 67, 0.18));
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #f8fafc !important;
+      border: 1px solid rgba(255,255,255,0.22);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.01em;
+      gap: 6px;
+    }
+    #ap-juicer-wrapper .juicer-feed li.feed-item .j-meta nav a::after {
+      content: "LinkedIn";
+    }
+
+    #ap-juicer-wrapper .juicer-feed li.feed-item .j-source-chip {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.35);
+      color: #f3f4f6;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.03em;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      text-transform: uppercase;
+      z-index: 3;
+    }
+
+    #ap-juicer-wrapper .juicer-feed li.feed-item::after {
+      content: "";
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.4);
+      background-size: 60%;
+      background-position: center;
+      background-repeat: no-repeat;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.16);
+      opacity: 0.9;
+      z-index: 3;
+    }
+    #ap-juicer-wrapper .juicer-feed li.feed-item.j-instagram::after { background-image: url("https://cdn-icons-png.flaticon.com/512/174/174855.png"); }
+    #ap-juicer-wrapper .juicer-feed li.feed-item.j-facebook::after   { background-image: url("https://cdn-icons-png.flaticon.com/512/733/733547.png"); }
+    #ap-juicer-wrapper .juicer-feed li.feed-item.j-linkedin::after   { background-image: url("https://cdn-icons-png.flaticon.com/512/3536/3536505.png"); }
+
+    #ap-juicer-wrapper .juicer-feed li.feed-item .j-date {
+      font-weight: 700;
+      color: #e2e8f0;
+      font-size: 12px;
+    }
+
+    #ap-juicer-wrapper .juicer-feed .j-poster { display: none !important; }
+    #ap-juicer-wrapper .juicer-feed *::-webkit-scrollbar { display: none !important; }
+    #ap-juicer-wrapper .juicer-feed * { scrollbar-width: none !important; -ms-overflow-style: none !important; }
+
+    #ap-juicer-wrapper .juicer-feed a:hover {
+      color: #1c5bbf;
+    }
+
+    /* Overlay (post modal) */
+    #ap-juicer-wrapper .j-post-overlay {
+      background: radial-gradient(circle at 25% 20%, rgba(28, 91, 191, 0.18), transparent 45%), rgba(6, 14, 26, 0.86);
+      backdrop-filter: blur(10px);
+      padding: 40px 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    #ap-juicer-wrapper .j-post-overlay .image.media-preview {
+      max-width: 880px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 32px 62px rgba(0, 0, 0, 0.55);
+    }
+    #ap-juicer-wrapper .j-post-overlay .image.media-preview .j-image,
+    #ap-juicer-wrapper .j-post-overlay .image.media-preview img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ap-juicer-wrapper .j-post-overlay .j-overlay-text {
+      max-width: 880px;
+      margin: 20px auto 0;
+      padding: 22px 24px 20px;
+      background: linear-gradient(135deg, rgba(28, 91, 191, 0.18), rgba(11, 31, 53, 0.92));
+      border: 1px solid rgba(246, 195, 67, 0.16);
+      border-radius: 20px;
+      color: #eef4fb;
+      box-shadow: 0 26px 52px rgba(13, 35, 72, 0.38);
+    }
+    #ap-juicer-wrapper .j-post-overlay .j-overlay-text .j-message {
+      margin: 0 0 12px;
+      line-height: 1.6;
+      font-size: 16px;
+      color: #dce7f5;
+    }
+    #ap-juicer-wrapper .j-post-overlay .j-overlay-text .j-message p {
+      margin: 0 0 12px;
+      color: #f7fbff;
+    }
+    #ap-juicer-wrapper .j-post-overlay .j-overlay-text .j-meta {
+      border-top: 1px solid rgba(246, 195, 67, 0.28);
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #dce7f5;
+      font-size: 13px;
+    }
+    #ap-juicer-wrapper .j-post-overlay .j-overlay-text .j-bottom .juicer-button {
+      background: linear-gradient(135deg, #1c5bbf, #f6c343);
+      border: none;
+      color: #0b1f35;
+      font-weight: 800;
+      padding: 12px 18px;
+      border-radius: 999px;
+      box-shadow: 0 14px 34px rgba(0,0,0,0.38);
+    }
+    #ap-juicer-wrapper .j-post-overlay .j-navigate button {
+      background: linear-gradient(135deg, rgba(28, 91, 191, 0.18), rgba(246, 195, 67, 0.14));
+      border: 1px solid rgba(255,255,255,0.22);
+      color: #eef4fb;
+      border-radius: 12px;
+      padding: 9px 14px;
+      font-weight: 600;
+    }
+    } /* end layer */
+  </style>
+</head>
+<body>
+  <div id="ap-juicer-wrapper">
+    <h2 class="linked-in-header">From the LinkedIn Feed</h2>
+    <div class="juicer-feed" data-feed-id="advancepathways" data-per="8"></div>
+    <script
+      src="https://www.juicer.io/embed/advancepathways/embed-code.js?columns=4&per=8&gutter=7&truncate=120&style=none"
+      async
+      defer
+    ></script>
+  </div>
+
+  <script>
+    // Normalize grid: remove inline widths; keep structure clean.
+    (function () {
+      const feedRoot = document.querySelector("#ap-juicer-wrapper .juicer-feed");
+      if (!feedRoot) return;
+
+      function normalize() {
+        const stacks = feedRoot.querySelectorAll(".j-stack, ul[class^='j-column'], .galcolumn");
+        stacks.forEach((stack) => {
+          stack.removeAttribute("style");
+        });
+
+        const items = feedRoot.querySelectorAll("li.feed-item");
+        items.forEach((item) => {
+          item.removeAttribute("style");
+        });
+      }
+
+      document.addEventListener("juicer:loaded", () => setTimeout(normalize, 50));
+      document.addEventListener("juicer:post_appended", () => setTimeout(normalize, 50));
+      document.addEventListener("DOMContentLoaded", () => setTimeout(normalize, 200));
+      // Extra safety: if WordPress delays script execution, retry once
+      setTimeout(normalize, 1000);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advance Pathways | Careers</title>
+    <meta
+      name="description"
+      content="Explore careers at Advance Pathways and help motivated adults move from crisis to independence."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ap-gold: #fccb6f;
+        --ap-gold-2: #f3b955;
+        --ap-slate: #0c3b46;
+        --ap-slate-2: #1e3540;
+        --ap-text: #0f1f25;
+        --ap-muted: #5b7080;
+        --ap-surface: #ffffff;
+        --ap-bg: #f3f6f8;
+        --r-sm: 12px;
+        --r-md: 18px;
+        --r-lg: 24px;
+        --shadow-soft: 0 12px 36px rgba(15, 31, 37, 0.14);
+        --shadow-subtle: 0 8px 20px rgba(15, 31, 37, 0.08);
+        --space-8: 8px;
+        --space-12: 12px;
+        --space-16: 16px;
+        --space-20: 20px;
+        --space-24: 24px;
+        --space-32: 32px;
+        --space-40: 40px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 100%;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", Arial, sans-serif;
+        background:
+          radial-gradient(circle at 12% 18%, rgba(252, 203, 111, 0.08), transparent 26%),
+          radial-gradient(circle at 82% 12%, rgba(12, 59, 70, 0.06), transparent 22%),
+          linear-gradient(180deg, #f9fbfd 0%, #eef3f9 80%);
+        color: var(--ap-text);
+        line-height: 1.65;
+        font-size: clamp(0.95rem, 0.35vw + 0.9rem, 1.05rem);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image:
+          url("https://advancepathways.org/wp-content/uploads/2025/09/AP-PrimaryLogo-Blue.png"),
+          url("https://advancepathways.org/wp-content/uploads/2025/09/AP-PrimaryLogo-Blue.png"),
+          radial-gradient(circle at 12% 18%, rgba(252, 203, 111, 0.08), transparent 35%),
+          radial-gradient(circle at 82% 12%, rgba(12, 59, 70, 0.06), transparent 33%);
+        background-position:
+          var(--logo-one-pos, 6% 6%),
+          var(--logo-two-pos, 94% 92%),
+          12% 25%,
+          82% 18%;
+        background-size:
+          clamp(110px, 16vw, 210px),
+          clamp(120px, 18vw, 230px),
+          650px 650px,
+          450px 450px;
+        background-repeat: no-repeat;
+        opacity: 0.08;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: repeating-linear-gradient(
+          135deg,
+          rgba(252, 203, 111, 0.04),
+          rgba(252, 203, 111, 0.04) 100px,
+          transparent 100px,
+          transparent 200px
+        );
+        opacity: 0.5;
+        pointer-events: none;
+        z-index: -2;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        width: 100%;
+        position: relative;
+        z-index: 1;
+      }
+
+      .layout {
+        width: 100%;
+        max-width: clamp(1100px, 85vw, 1240px);
+        margin: 0 auto;
+        padding: 0 clamp(1rem, 3vw, 3rem);
+      }
+
+      section {
+        padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.2rem, 4vw, 3rem);
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(3rem, 5vw, 4.5rem);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-8);
+        padding: 0.95em 2.2em;
+        border-radius: 999px;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.25s ease, color 0.25s ease;
+      }
+
+      .btn--primary {
+        background: linear-gradient(120deg, var(--ap-gold), var(--ap-gold-2));
+        color: var(--ap-slate);
+        box-shadow: 0 18px 36px rgba(252, 203, 111, 0.45);
+      }
+
+      .btn--primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 24px 54px rgba(252, 203, 111, 0.55);
+      }
+
+      .btn--secondary {
+        background: #fff;
+        color: var(--ap-slate);
+        border: 1px solid var(--ap-slate);
+        box-shadow: var(--shadow-subtle);
+      }
+
+      .btn--secondary:hover {
+        transform: translateY(-2px);
+        background: var(--ap-slate);
+        color: #fff;
+      }
+
+      .section-head {
+        display: grid;
+        gap: var(--space-8);
+        margin-bottom: var(--space-24);
+      }
+
+      .section-head__eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-8);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-weight: 800;
+        font-size: 0.78rem;
+        color: var(--ap-gold);
+      }
+
+      .section-head__eyebrow::before {
+        content: "";
+        width: 42px;
+        height: 2px;
+        background: var(--ap-gold);
+        display: inline-block;
+      }
+
+      .section-head__title {
+        margin: 0;
+        font-family: "Space Grotesk", "Inter", sans-serif;
+        font-size: clamp(1.9rem, 1.2rem + 1.6vw, 2.9rem);
+        font-weight: 800;
+        line-height: 1.16;
+        color: var(--ap-slate);
+      }
+
+      /* --------------------------------
+         COMPONENT: HERO
+      ----------------------------------*/
+      .hero {
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+        padding: clamp(72px, 11vw, 140px) 0 clamp(48px, 8vw, 100px);
+        background: linear-gradient(140deg, rgba(12, 59, 70, 0.92), rgba(12, 59, 70, 0.8)),
+          url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80") center/cover
+            no-repeat;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 10% 10%, rgba(252, 203, 111, 0.25), transparent 45%),
+          radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.15), transparent 35%);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .hero__grid {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: clamp(1.5rem, 3vw, 2.5rem);
+        align-items: center;
+        z-index: 1;
+      }
+
+      .hero__content {
+        display: grid;
+        gap: var(--space-16);
+      }
+
+      .hero__eyebrow {
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .hero__title {
+        margin: 0;
+        font-family: "Space Grotesk", "Inter", sans-serif;
+        font-size: clamp(2.6rem, 1.9rem + 2vw, 3.9rem);
+        letter-spacing: -0.02em;
+      }
+
+      .hero__lead {
+        margin: 0;
+        font-size: clamp(1.1rem, 0.4vw + 1rem, 1.4rem);
+        color: rgba(255, 255, 255, 0.85);
+        max-width: 64ch;
+      }
+
+      .hero__actions {
+        display: flex;
+        gap: var(--space-16);
+        flex-wrap: nowrap;
+        justify-content: center;
+      }
+
+      .hero__actions .btn {
+        min-width: 210px;
+        white-space: nowrap;
+      }
+
+      .hero__mini-stats {
+        display: flex;
+        gap: var(--space-20);
+        flex-wrap: wrap;
+      }
+
+      .section__text {
+        max-width: 70ch;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+      }
+
+      .testimonials {
+        padding-top: var(--space-32);
+      }
+
+      .role__divider {
+        height: 2px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, rgba(252, 203, 111, 0), rgba(252, 203, 111, 0.6), rgba(252, 203, 111, 0));
+        margin: var(--space-14) 0;
+      }
+
+      .role__close {
+        padding: 0.35rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(12, 59, 70, 0.08);
+        transition: background 0.2s ease;
+      }
+
+      .role__close:hover,
+      .role__close:focus-visible {
+        background: rgba(12, 59, 70, 0.2);
+      }
+
+      .hero__mini-stats span {
+        display: grid;
+        gap: 0.2rem;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .hero__mini-stats strong {
+        font-size: 1.4rem;
+        color: #fff;
+      }
+
+      .hero__panel {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: var(--r-lg);
+        padding: var(--space-16);
+        box-shadow: 0 20px 50px rgba(5, 15, 25, 0.5);
+        backdrop-filter: blur(10px);
+      }
+
+      .hero__panel-title {
+        margin: 0;
+        font-size: 1rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .hero__panel-body {
+        margin-top: var(--space-12);
+        display: grid;
+        gap: 0.6rem;
+      }
+
+      .hero__panel-list {
+        margin: 0;
+        padding-left: 1.1rem;
+        color: rgba(255, 255, 255, 0.8);
+        display: grid;
+        gap: 0.4rem;
+      }
+
+      .hero__panel-foot {
+        margin-top: var(--space-16);
+        padding-top: var(--space-12);
+        border-top: 1px solid rgba(255, 255, 255, 0.25);
+        font-size: 0.85rem;
+        color: #fff;
+      }
+
+      .cta__micro {
+        margin: 0 0 0.5rem;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      /* --------------------------------
+         SECTION: ROLE INTRO
+      ----------------------------------*/
+      .role-intro__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: clamp(2rem, 3vw, 3rem);
+        align-items: start;
+      }
+
+      .role-intro p {
+        max-width: 60ch;
+        color: var(--ap-muted);
+        margin-top: 0;
+      }
+
+      .role-intro__list {
+        margin: 1rem 0 0;
+        padding-left: 1.2rem;
+        display: grid;
+        gap: 0.4rem;
+        color: var(--ap-muted);
+      }
+
+      .role-intro__stats {
+        background: #fff;
+        border-radius: var(--r-lg);
+        padding: clamp(1.5rem, 3vw, 2rem);
+        border: 1px solid rgba(12, 59, 70, 0.08);
+        box-shadow: var(--shadow-subtle);
+        display: grid;
+        gap: 1rem;
+        min-height: 260px;
+      }
+
+      .role-intro__stats div {
+        display: grid;
+        gap: 0.2rem;
+      }
+
+      .role-intro__stats strong {
+        font-size: clamp(1.7rem, 1rem + 1vw, 2.4rem);
+        color: var(--ap-slate);
+      }
+
+      .role-intro__stats span {
+        font-size: 0.95rem;
+        color: var(--ap-muted);
+      }
+
+      /* --------------------------------
+         SECTION: ROLES
+      ----------------------------------*/
+      .roles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: clamp(1.4rem, 3vw, 1.8rem);
+      }
+
+      .role {
+        background: #fff;
+        border: 1px solid #e5eaf1;
+        border-radius: var(--r-lg);
+        box-shadow: var(--shadow-subtle);
+        position: relative;
+        overflow: hidden;
+        padding: clamp(1rem, 2vw, 1.3rem);
+      }
+
+      .role__summary {
+        width: 100%;
+        border: none;
+        background: linear-gradient(120deg, rgba(252, 203, 111, 0.3), rgba(255, 255, 255, 0.02));
+        padding: 0.9rem 1rem;
+        text-align: left;
+        font-family: "Space Grotesk", "Inter", sans-serif;
+        font-size: clamp(1.1rem, 0.5vw + 1rem, 1.3rem);
+        font-weight: 700;
+        color: var(--ap-slate);
+        border-radius: var(--r-md);
+        cursor: pointer;
+        box-shadow: inset 0 0 0 1px rgba(252, 203, 111, 0.4);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        min-height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .role__summary:hover,
+      .role__summary:focus-visible {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(12, 59, 70, 0.15);
+      }
+
+      .role__popup {
+        position: fixed;
+        inset: 0;
+        background: rgba(11, 32, 40, 0.75);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(1rem, 3vw, 2rem);
+        z-index: 20;
+        backdrop-filter: blur(5px);
+        transition: opacity 0.3s ease;
+        opacity: 0;
+      }
+
+      .role__popup.is-open {
+        display: flex;
+        opacity: 1;
+      }
+
+      .role__popup-inner {
+        background: radial-gradient(circle at 20% 0%, rgba(252, 203, 111, 0.35), transparent 55%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(230, 236, 244, 0.98));
+        border-radius: var(--r-lg);
+        border: 1px solid rgba(12, 59, 70, 0.2);
+        max-width: 960px;
+        width: min(100%, 640px);
+        padding: clamp(2rem, 4vw, 2.6rem);
+        position: relative;
+        max-height: 82vh;
+        overflow-y: auto;
+        box-shadow: 0 32px 80px rgba(5, 15, 25, 0.45);
+        animation: pop 0.35s ease;
+        scrollbar-width: none;
+      }
+      .role__popup-inner::-webkit-scrollbar {
+        display: none;
+      }
+      }
+
+      .role__close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        border: none;
+        background: none;
+        font-size: 0.85rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--ap-slate);
+        cursor: pointer;
+      }
+
+      .role__content {
+        padding-top: var(--space-16);
+        display: grid;
+        gap: var(--space-10);
+        color: var(--ap-text);
+      }
+
+      .role__content h3 {
+        margin: 0;
+        font-size: clamp(1.05rem, 0.5vw + 1rem, 1.25rem);
+        color: var(--ap-slate);
+      }
+
+      .role__content ul,
+      .role__content ol {
+        padding-left: 1.1rem;
+        margin: 0.35rem 0 0;
+        display: grid;
+        gap: 0.4rem;
+        color: var(--ap-muted);
+      }
+
+      .role__summary::after {
+        content: "→";
+        float: right;
+        transition: transform 0.2s ease;
+      }
+
+      .role__summary:hover::after,
+      .role__summary:focus-visible::after {
+        transform: translateX(6px);
+      }
+
+      .role__popup-inner {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 249, 255, 0.98));
+        border-radius: var(--r-lg);
+        border: 1px solid rgba(12, 59, 70, 0.18);
+        max-width: 960px;
+        width: min(100%, 640px);
+        padding: clamp(1.5rem, 3vw, 2rem);
+        position: relative;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 30px 70px rgba(5, 15, 25, 0.45);
+        animation: pop 0.35s ease;
+      }
+
+      .role__popup-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: var(--space-16);
+      }
+
+      .role__popup-eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        font-size: 0.75rem;
+        color: var(--ap-slate-2);
+      }
+
+      .role__popup-subtitle {
+        margin: 0;
+        font-size: 0.95rem;
+        color: var(--ap-muted);
+      }
+
+      .section__text {
+        max-width: 70ch;
+        line-height: 1.6;
+        margin-bottom: 1.25rem;
+      }
+
+      .role__popup-body {
+        margin-top: var(--space-18);
+        display: grid;
+        gap: var(--space-16);
+      }
+
+      .role__popup-body section {
+        background: #fff;
+        border-radius: var(--r-md);
+        padding: var(--space-16);
+        border: 1px solid rgba(12, 59, 70, 0.08);
+        box-shadow: 0 12px 26px rgba(5, 15, 25, 0.08);
+      }
+
+      .role__popup-body section:nth-child(odd) {
+        border-color: rgba(252, 203, 111, 0.35);
+      }
+
+      .role__popup-body section h4 {
+        margin: 0 0 0.4rem;
+        font-size: 1rem;
+        color: var(--ap-slate);
+      }
+
+      .role__popup-body section ul {
+        margin: 0;
+        padding-left: 1.1rem;
+        display: grid;
+        gap: 0.35rem;
+      }
+
+      .role__popup-footer {
+        margin-top: var(--space-16);
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-12);
+        align-items: center;
+        border-top: 1px solid rgba(12, 59, 70, 0.12);
+        padding-top: var(--space-12);
+      }
+
+      .role__popup-footer p {
+        margin: 0;
+        color: var(--ap-muted);
+        flex: 1;
+      }
+
+      .role__divider {
+        height: 2px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, rgba(252, 203, 111, 0), rgba(252, 203, 111, 0.6), rgba(252, 203, 111, 0));
+        margin: var(--space-14) 0;
+      }
+
+      .role__close {
+        padding: 0.35rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(12, 59, 70, 0.06);
+        transition: background 0.2s ease;
+      }
+
+      .role__close:hover,
+      .role__close:focus-visible {
+        background: rgba(12, 59, 70, 0.15);
+      }
+
+      @keyframes pop {
+        from {
+          opacity: 0;
+          transform: translateY(20px) scale(0.96);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      /* --------------------------------
+         SECTION: CULTURE
+      ----------------------------------*/
+      .culture {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: clamp(1.5rem, 3vw, 2rem);
+        align-items: start;
+      }
+
+      .culture__card {
+        background: #fff;
+        border-radius: var(--r-lg);
+        border: 1px solid #e5eaf1;
+        box-shadow: var(--shadow-subtle);
+        padding: clamp(1.25rem, 2vw, 1.8rem);
+        display: grid;
+        gap: var(--space-12);
+      }
+
+      .list {
+        padding-left: 1.1rem;
+        margin: 0;
+        display: grid;
+        gap: 0.4rem;
+        color: var(--ap-muted);
+      }
+
+      /* --------------------------------
+         SECTION: BENEFITS GRID
+      ----------------------------------*/
+      .benefits {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: clamp(1.1rem, 3vw, 1.6rem);
+      }
+
+      .benefit {
+        background: linear-gradient(180deg, #fff, #fdfbf6);
+        border-radius: var(--r-md);
+        border: 1px solid rgba(12, 59, 70, 0.08);
+        padding: clamp(1.1rem, 2vw, 1.6rem);
+        box-shadow: var(--shadow-subtle);
+        display: grid;
+        gap: var(--space-8);
+      }
+
+      .benefit__title {
+        margin: 0;
+        font-weight: 700;
+        color: var(--ap-slate);
+      }
+
+      /* --------------------------------
+         SECTION: CTA
+      ----------------------------------*/
+      .cta {
+        background: linear-gradient(110deg, var(--ap-slate), #112a32);
+        color: #fff;
+        border-radius: var(--r-lg);
+        padding: clamp(1.6rem, 3vw, 2.6rem);
+        display: grid;
+        gap: var(--space-12);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .cta__title {
+        margin: 0;
+        font-family: "Space Grotesk", "Inter", sans-serif;
+        font-size: clamp(1.8rem, 1.1rem + 1.5vw, 2.6rem);
+      }
+
+      /* --------------------------------
+         SECTION: FOOTER
+      ----------------------------------*/
+      .footer {
+        background: var(--ap-slate);
+        color: #f7fbff;
+        padding: var(--space-24);
+      }
+
+      .footer__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: var(--space-24);
+      }
+
+      .footer h4 {
+        margin: 0 0 var(--space-12);
+      }
+
+      .footer p,
+      .footer ul {
+        margin: 0;
+        color: rgba(247, 251, 255, 0.8);
+      }
+
+      .footer ul {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        gap: var(--space-8);
+      }
+
+      .footer__brand {
+        font-family: "Space Grotesk", "Inter", sans-serif;
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: #fff;
+      }
+
+      /* --------------------------------
+         RESPONSIVE BREAKPOINTS
+      ----------------------------------*/
+      @media (min-width: 480px) {
+        .hero__actions {
+          flex-direction: row;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .hero__grid {
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        }
+        .culture {
+          grid-template-columns: 3fr 2fr;
+        }
+        .hero__content {
+          max-width: 460px;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .hero__mini-stats {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: var(--space-12);
+        }
+        body::before {
+          opacity: 0.05;
+        }
+        .hero__actions {
+          flex-wrap: wrap;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .hero__grid {
+          grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+        }
+      }
+
+      @media (min-width: 1280px) {
+        .hero__subtitle {
+          max-width: 62ch;
+        }
+      }
+
+      @media (min-width: 1536px) {
+        .layout {
+          max-width: 1340px;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <span class="hero__shape" aria-hidden="true"></span>
+        <div class="layout hero__grid">
+          <div class="hero__content">
+            <p class="hero__eyebrow">Careers at Advance Pathways</p>
+            <h1 class="hero__title">Shape pathways from crisis to independence.</h1>
+            <p class="hero__lead">
+              Join Aurora’s leading navigation campus and help adults unlock housing, recovery, and workforce opportunities through
+              compassionate, trauma-informed care.
+            </p>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="mailto:careers@advancepathways.org">Email careers</a>
+              <a class="btn btn--secondary" href="#roles">See open roles</a>
+            </div>
+            <div class="hero__mini-stats">
+              <span>
+                <strong>24/7</strong>
+                <span>Service hours</span>
+              </span>
+              <span>
+                <strong>20+</strong>
+                <span>Community partners</span>
+              </span>
+              <span>
+                <strong>1</strong>
+                <span>Unified campus</span>
+              </span>
+            </div>
+          </div>
+          <div class="hero__panel">
+            <p class="hero__panel-title">Career experience snapshots</p>
+            <div class="hero__panel-body">
+              <p>Clinically-driven services, daily collaboration, and tangible impact for every guest you support.</p>
+              <ul class="hero__panel-list">
+                <li>Co-create recovery plans with a cross-functional team.</li>
+                <li>Lead peers through goal-setting, housing navigation, and employment coaching.</li>
+                <li>Access on-site resources, telehealth, and post-placement follow-up.</li>
+              </ul>
+            </div>
+            <div class="hero__panel-foot">
+              <span>Flexible shifts • Continued learning • Leadership pathways</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="role-intro">
+          <div class="layout role-intro__grid">
+            <div>
+              <div class="section-head">
+                <span class="section-head__eyebrow">Aurora Regional Navigation Campus</span>
+                <h2 class="section-head__title">A mission that centers dignity.</h2>
+              </div>
+              <p>
+                The Navigation Campus blends housing tiers, wraparound services, and workforce pathways so motivated adults can chart
+                a predictable path toward lasting independence.
+              </p>
+              <ul class="role-intro__list">
+                <li>Trauma-informed care with peer-led support and clinical oversight.</li>
+                <li>Daily collaboration with community health, education, and workforce partners.</li>
+                <li>Clear pathways for professional growth, leadership, and advocacy.</li>
+              </ul>
+            </div>
+            <div class="role-intro__stats">
+              <div>
+                <strong>255</strong>
+                <span>rooms redesigned for recovery</span>
+              </div>
+              <div>
+                <strong>3</strong>
+                <span>structured housing tiers + navigation teams</span>
+              </div>
+              <div>
+                <strong>100%</strong>
+                <span>commitment to safety, stability, and respect</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="roles">
+          <div class="layout">
+            <div class="section-head">
+              <span class="section-head__eyebrow">Open positions</span>
+              <h2 class="section-head__title">Bring your expertise to Advance Pathways</h2>
+            </div>
+            <div class="roles">
+              <article class="role" data-role="case-manager">
+                <button class="role__summary" type="button">Case Manager Supervisor – LCSW</button>
+                <div class="role__popup" role="dialog" aria-modal="true" aria-hidden="true">
+                  <div class="role__popup-inner">
+                    <div class="role__popup-header">
+                      <div>
+                        <p class="role__popup-eyebrow">Advanced Clinical Leadership</p>
+                        <h3>Case Manager Supervisor – LCSW</h3>
+                        <p class="role__popup-subtitle">$80,000–$95,000 · Full-time</p>
+                        <p class="role__popup-subtitle">Guides clinical supervision, training, and guest goal-setting.</p>
+                      </div>
+                      <button class="role__close" type="button" aria-label="Close case manager details">Close</button>
+                    </div>
+                    <div class="role__popup-body">
+                      <section>
+                        <h4>Spotlight responsibilities</h4>
+                        <ul>
+                          <li>Lead supervision and mentoring for Case Managers and peer support specialists.</li>
+                          <li>Deliver programming that fosters a culture of safety, health, and advancement.</li>
+                          <li>Support guests in articulating goals toward employment, housing, and independence.</li>
+                          <li>Collaborate closely with Aurora partners to report progress and remove barriers.</li>
+                        </ul>
+                      </section>
+                      <div class="role__divider" aria-hidden="true"></div>
+                      <section>
+                        <h4>One-to-one impact</h4>
+                        <ul>
+                          <li>Manage ~20 guests with recovery plans, goal-setting, and life coaching.</li>
+                          <li>Combat stigma, facilitate support groups, and model problem-solving.</li>
+                          <li>Transition guests toward stable housing and connect them to resources.</li>
+                        </ul>
+                      </section>
+                      <div class="role__divider" aria-hidden="true"></div>
+                      <section>
+                        <h4>Documentation + professionalism</h4>
+                        <ul>
+                          <li>Maintain HMIS accuracy, grant reporting, and confidentiality.</li>
+                          <li>Enforce policies, attend meetings, and cultivate a trauma-informed culture.</li>
+                        </ul>
+                      </section>
+                      <div class="role__divider" aria-hidden="true"></div>
+                      <section>
+                        <h4>Qualifications &amp; preferences</h4>
+                        <ul>
+                          <li>LCSW credential, Medicaid billing, HMIS, and 3+ years in homelessness/SUD/mental health.</li>
+                          <li>Licensed Addiction Counselor preferred; lived experience welcomed.</li>
+                          <li>Reliable transportation and acceptable Colorado background check.</li>
+                        </ul>
+                      </section>
+                    </div>
+                    <div class="role__popup-footer">
+                      <p>Belief in Advance Pathways’ vision, commitment to professional growth, and trauma-informed leadership are essential.</p>
+                      <a class="btn btn--primary" href="mailto:careers@advancepathways.org"
+                        >Apply to lead Case Management</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="role" data-role="navigator">
+                <button class="role__summary" type="button">Resource Navigator</button>
+                <div class="role__popup" role="dialog" aria-modal="true" aria-hidden="true">
+                  <div class="role__popup-inner">
+                    <div class="role__popup-header">
+                      <div>
+                        <p class="role__popup-eyebrow">Frontline Navigation</p>
+                        <h3>Resource Navigator</h3>
+                        <p class="role__popup-subtitle">$23.77–$28.62 · Full-time</p>
+                        <p class="role__popup-subtitle">Directly guide guests toward services, housing, and wellness.</p>
+                      </div>
+                      <button class="role__close" type="button" aria-label="Close navigator details">Close</button>
+                    </div>
+                    <div class="role__popup-body">
+                      <section>
+                        <h4>Day-to-day impact</h4>
+                        <ul>
+                          <li>Deliver programing, transportation navigation, and safe space stewardship.</li>
+                          <li>Listen deeply, encourage engagement, and promote hospitality standards.</li>
+                          <li>Set up/clean Day Center spaces while modeling accountability to guests.</li>
+                        </ul>
+                      </section>
+                      <div class="role__divider" aria-hidden="true"></div>
+                      <section>
+                        <h4>Support &amp; safety</h4>
+                        <ul>
+                          <li>Engage guests in supportive discussions and monitor interactions.</li>
+                          <li>Report incidents, uphold standards (including suspensions/trespass), and act with respect.</li>
+                          <li>Respond to crises with empathy and professionalism.</li>
+                        </ul>
+                      </section>
+                      <div class="role__divider" aria-hidden="true"></div>
+                      <section>
+                        <h4>Documentation &amp; collaboration</h4>
+                        <ul>
+                          <li>Become HMIS certified; submit accurate shift reports and documentation.</li>
+                          <li>Answer Day Center phones and direct calls to resources.</li>
+                          <li>Work across teams to promote inclusive, trauma-informed care.</li>
+                        </ul>
+                      </section>
+                      <div class="role__divider" aria-hidden="true"></div>
+                      <section>
+                        <h4>Qualifications &amp; preferences</h4>
+                        <ul>
+                          <li>HS diploma/equivalent, HMIS/Microsoft proficiency, conflict mediation savvy.</li>
+                          <li>Valid driver’s license, reliability, acceptable background check.</li>
+                          <li>Preferred: 1+ year with homeless services, recovery experience, adaptable presence.</li>
+                        </ul>
+                      </section>
+                      <div class="role__divider" aria-hidden="true"></div>
+                      <section>
+                        <h4>Benefits &amp; culture</h4>
+                        <ul>
+                          <li>PTO starts at 2 weeks with 10 paid holidays, 403(b) + 3% match, medical/vision/dental.</li>
+                        </ul>
+                      </section>
+                    </div>
+                    <div class="role__popup-footer">
+                      <p>Join a team honored to role-model recovery, equity, and community connection.</p>
+                      <a class="btn btn--primary" href="mailto:Careers@Advancepathways.org"
+                        >Apply as Resource Navigator</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="role" data-role="operations">
+                <button class="role__summary" type="button">Operations Manager</button>
+                <div class="role__popup" role="dialog" aria-modal="true" aria-hidden="true">
+                  <div class="role__popup-inner">
+                    <div class="role__popup-header">
+                      <div>
+                        <p class="role__popup-eyebrow">Operational Excellence</p>
+                        <h3>Operations Manager</h3>
+                        <p class="role__popup-subtitle">$90,000–$110,000 · Full-time</p>
+                        <p class="role__popup-subtitle">Drive efficiency, safety, and innovation across campus operations.</p>
+                      </div>
+                      <button class="role__close" type="button" aria-label="Close operations details">Close</button>
+                    </div>
+                    <div class="role__popup-body">
+                      <section>
+                        <h4>Impact focus</h4>
+                        <ul>
+                          <li>Coordinate daily business functions within a fast-growing nonprofit.</li>
+                          <li>Ensure seamless workflows across programming, facilities, and administration.</li>
+                          <li>Partner with leadership to align operations with strategic goals.</li>
+                        </ul>
+                      </section>
+                      <div class="role__divider" aria-hidden="true"></div>
+                      <section>
+                        <h4>Leadership &amp; accountability</h4>
+                        <ul>
+                          <li>Lead cross-functional teams with clear communication and accountability.</li>
+                          <li>Monitor KPIs, safety standards, and quality assurance.</li>
+                          <li>Manage vendors, contracts, and continuous improvement initiatives.</li>
+                        </ul>
+                      </section>
+                      <div class="role__divider" aria-hidden="true"></div>
+                      <section>
+                        <h4>Qualifications</h4>
+                        <ul>
+                          <li>Proven operations management experience in nonprofit or high-growth environments.</li>
+                          <li>Strong organizational, communication, and analytical skills.</li>
+                          <li>Safety, compliance, and process improvement knowledge.</li>
+                        </ul>
+                      </section>
+                    </div>
+                    <div class="role__popup-footer">
+                      <p>Bring proactive problem-solving, a positive leadership mindset, and passion for serving adults exiting homelessness.</p>
+                      <a class="btn btn--primary" href="mailto:careers@advancepathways.org"
+                        >Apply to lead Operations</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="layout culture">
+            <article class="culture__card">
+            <div class="section-head">
+              <span class="section-head__eyebrow">Who we are</span>
+              <h2 class="section-head__title">Advance Pathways, Inc.</h2>
+            </div>
+            <div class="section__text">
+              <p>
+                Advance Pathways, Inc. is a non-profit organization started to address the needs of adults facing homelessness in Aurora,
+                Colorado, with a goal for them to gain the needed skills to secure and maintain high-quality, dependable employment
+                and lasting, secure housing.
+              </p>
+              <p>
+                Advance Pathways brings together the needed talent, skills, and resources to empower individuals to embark on their
+                journeys to a lifetime of housing stability and personal fulfillment. Following the philosophy of extending a “hand up,”
+                staff at Advance Pathways not only provide needed tools for success, but mentor, train, and inspire Community Members
+                to achieve their highest while offering them the long-term support they need to be successful for a lifetime.
+              </p>
+            </div>
+            <div class="section-head">
+              <span class="section-head__eyebrow">Why work at Advance Pathways?</span>
+              <h2 class="section-head__title section-head__title--light">We invest in our team</h2>
+            </div>
+            <p class="section__text">
+              We believe in investing in our team members to be the best version of themselves while solving the complex problem of
+              homelessness. You can be among the first employees to co-create and thrive in a culture that is rooted in professional
+              development, values inclusion, and encourages creativity and innovation for trying new approaches to support
+              long-term sustainability and independence for the people we serve.
+            </p>
+            <h3>What Current Employees Say About Us</h3>
+            <ul class="list">
+              <li>“Advance Pathways has invested more in me in three weeks than my former employer invested in three years.”</li>
+              <li>“I love this place! It’s so wonderful to be seen and have my contribution valued.”</li>
+              <li>“It feels great to be in on the ground floor of a non-profit doing things creatively and making a long-lasting impact for people experiencing homelessness in Aurora.”</li>
+            </ul>
+            <h3>EOE Statement</h3>
+            <p>
+              Advance Pathways, Inc. will not discriminate based on race, religion, ethnicity, culture, national origin or ancestry,
+              language, military or veteran status, political affiliation or belief, sexual orientation, gender identity or expression,
+              health status, genetic information, physical or mental disability, familial (marital or parental) status or family responsibilities,
+              gender, sex, age, any other characteristic protected under federal, state, or local law.
+            </p>
+            </article>
+
+            <article class="culture__card">
+              <div class="section-head">
+                <span class="section-head__eyebrow">Benefits</span>
+                <h2 class="section-head__title">Why you’ll thrive here</h2>
+              </div>
+              <div class="benefits">
+                <div class="benefit">
+                  <p class="benefit__title">Time to recharge</p>
+                  <p>PTO starts at 2 weeks plus 10 paid holidays.</p>
+                </div>
+                <div class="benefit">
+                  <p class="benefit__title">Future ready</p>
+                  <p>403(b) with 3% match and vesting schedule.</p>
+                </div>
+                <div class="benefit">
+                  <p class="benefit__title">Health first</p>
+                  <p>Comprehensive medical, vision, and dental coverage.</p>
+                </div>
+                <div class="benefit">
+                  <p class="benefit__title">Grow with us</p>
+                  <p>Coaching, development, and a clear path to lead.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+      <section>
+        <div class="layout">
+          <div class="cta">
+            <p class="section-head__eyebrow">Ready to apply?</p>
+            <h2 class="cta__title">Step into a role that changes lives—and yours.</h2>
+            <p class="cta__micro">200+ case managers hired with Advance Pathways support.</p>
+            <p>
+              Send your resume and cover letter to <a href="mailto:careers@advancepathways.org">careers@advancepathways.org</a>.
+              Share your experience, what drives you, and how you empower others.
+            </p>
+              <div>
+                <a class="btn btn--primary" href="mailto:careers@advancepathways.org">Email careers</a>
+                <a class="btn btn--secondary" href="#roles">See open roles</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <script>
+        (function () {
+          const popups = document.querySelectorAll(".role__popup");
+          const openButtons = document.querySelectorAll(".role__summary");
+          const closeButtons = document.querySelectorAll(".role__close");
+          const focusableSelector =
+            'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+          let currentPopup = null;
+          let lastFocused = null;
+
+          function closePopup(popup) {
+            if (!popup) return;
+            popup.classList.remove("is-open");
+            popup.setAttribute("aria-hidden", "true");
+            if (lastFocused) {
+              lastFocused.focus();
+              lastFocused = null;
+            }
+            currentPopup = null;
+          }
+
+          function closeAllPopups() {
+            popups.forEach((popup) => closePopup(popup));
+          }
+
+          function openPopup(popup, trigger) {
+            if (!popup) return;
+            closeAllPopups();
+            currentPopup = popup;
+            lastFocused = trigger;
+            popup.setAttribute("aria-hidden", "false");
+            popup.classList.add("is-open");
+            const focusable = popup.querySelectorAll(focusableSelector);
+            (focusable[0] || popup).focus();
+          }
+
+          openButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+              const popup = button.closest(".role").querySelector(".role__popup");
+              openPopup(popup, button);
+            });
+          });
+
+          closeButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+              const popup = button.closest(".role__popup");
+              closePopup(popup);
+            });
+          });
+
+          popups.forEach((popup) => {
+            popup.addEventListener("click", (event) => {
+              if (event.target === popup) {
+                closePopup(popup);
+              }
+            });
+          });
+
+          document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+              closeAllPopups();
+              return;
+            }
+            if (event.key !== "Tab" || !currentPopup) return;
+            const focusable = Array.from(currentPopup.querySelectorAll(focusableSelector)).filter(
+              (el) => el.offsetParent !== null || el.getAttribute("tabindex") !== null
+            );
+            if (!focusable.length) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (event.shiftKey && document.activeElement === first) {
+              event.preventDefault();
+              last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+              event.preventDefault();
+              first.focus();
+            }
+          });
+
+          const root = document.documentElement;
+          if (root) {
+            const update = () => {
+              const offset = window.scrollY / 26;
+              root.style.setProperty(
+                "--logo-one-pos",
+                `calc(6% + ${offset}px) calc(6% + ${offset * 0.45}px)`
+              );
+              root.style.setProperty(
+                "--logo-two-pos",
+                `calc(94% - ${offset}px) calc(92% - ${offset * 0.35}px)`
+              );
+            };
+            window.addEventListener("scroll", update, { passive: true });
+            update();
+          }
+        })();
+      </script>
+    </div>
+  </body>
+</html>

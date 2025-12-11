@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advance Pathways | Give & Volunteer</title>
+    <meta
+      name="description"
+      content="Support Advance Pathways by donating items, funds, or time to keep Aurora's Navigation Campus thriving."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* --------------------------------
+         TOKENS
+      ----------------------------------*/
+      :root {
+        --ap-white: #fff;
+        --ap-bg: #eff0ed;
+        --ap-soft: #eff0ed;
+        --ap-deck: #eff0ed;
+        --ap-slate: #0b364a;
+        --ap-slate-2: #0b364a;
+        --ap-text: #0b364a;
+        --ap-muted: rgba(11, 54, 74, 0.72);
+        --ap-gold: #fcaf1a;
+        --ap-gold-2: #fcaf1a;
+        --ap-rose: #98d8e2;
+        --ap-emerald: #98d8e2;
+        --ap-accent-blue: #98d8e2;
+        --ap-border: rgba(11, 54, 74, 0.16);
+        --ap-border-soft: rgba(11, 54, 74, 0.1);
+        --r-lg: 24px;
+        --r-md: 16px;
+        --r-sm: 12px;
+        --shadow: 0 18px 48px rgba(11, 54, 74, 0.12);
+        --shadow-2: 0 28px 80px rgba(11, 54, 74, 0.18);
+        --max: 1200px;
+      }
+
+      /* --------------------------------
+         BASE
+      ----------------------------------*/
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: var(--ap-bg);
+        color: var(--ap-text);
+        line-height: 1.65;
+        font-size: clamp(0.95rem, 0.4vw + 0.9rem, 1.05rem);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image:
+          url("https://advancepathways.org/wp-content/uploads/2025/09/AP-PrimaryLogo-Blue.png"),
+          url("https://advancepathways.org/wp-content/uploads/2025/09/AP-PrimaryLogo-Blue.png"),
+          radial-gradient(circle at 10% 20%, rgba(252, 175, 26, 0.08), transparent 35%),
+          radial-gradient(circle at 80% 10%, rgba(11, 54, 74, 0.08), transparent 30%);
+        background-position:
+          6% 6%,
+          94% 92%,
+          15% 25%,
+          82% 18%;
+        background-size:
+          clamp(110px, 16vw, 210px),
+          clamp(120px, 18vw, 230px),
+          600px 600px,
+          440px 440px;
+        background-repeat: no-repeat;
+        opacity: 0.08;
+        pointer-events: none;
+        z-index: -2;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: repeating-linear-gradient(
+          120deg,
+          rgba(252, 175, 26, 0.02),
+          rgba(252, 175, 26, 0.02) 120px,
+          transparent 120px,
+          transparent 240px
+        );
+        opacity: 0.6;
+        pointer-events: none;
+        z-index: -1;
+        background-color: rgba(152, 216, 226, 0.04);
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      p {
+        margin: 0 0 var(--space-12);
+      }
+
+      a:focus-visible {
+        outline: 3px solid var(--ap-gold);
+        outline-offset: 3px;
+      }
+
+      /* --------------------------------
+         LAYOUT
+      ----------------------------------*/
+      .page {
+        min-height: 100vh;
+      }
+
+      .layout {
+        width: 100%;
+        max-width: clamp(1100px, 82vw, 1280px);
+        margin: 0 auto;
+        padding: 0 clamp(1rem, 3vw, 3rem) clamp(3.5rem, 6vw, 4.5rem);
+      }
+
+      .stack {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(40px, 5vw, 72px);
+      }
+
+      /* --------------------------------
+         UTILITIES
+      ----------------------------------*/
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: var(--ap-soft);
+        color: var(--ap-slate);
+        font-weight: 700;
+        font-size: 0.9rem;
+        letter-spacing: 0.04em;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 20px;
+        border-radius: 999px;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        border: 2px solid transparent;
+        cursor: pointer;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+        box-shadow: 0 10px 20px rgba(11, 54, 74, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      }
+
+      .btn--primary {
+        background: linear-gradient(135deg, #0b364a, #0b364a 70%, #0b364a);
+        color: #fff;
+        box-shadow: 0 16px 32px rgba(11, 54, 74, 0.35), 0 0 0 1px rgba(11, 54, 74, 0.6);
+        border-color: rgba(11, 54, 74, 0.95);
+        background-size: 200% 200%;
+      }
+
+      .btn--ghost {
+        background: #fcaf1a;
+        color: #0b364a;
+        border: 2px solid #fcaf1a;
+        box-shadow: 0 10px 18px rgba(11, 54, 74, 0.08);
+        padding: 10px 18px;
+      }
+
+      .btn--mini {
+        padding: 10px 18px;
+        border: 2px solid transparent;
+        color: var(--ap-slate);
+        background:
+          linear-gradient(var(--ap-white), var(--ap-white)) padding-box,
+          linear-gradient(135deg, var(--ap-gold), var(--ap-gold-2)) border-box;
+        box-shadow: 0 8px 18px rgba(252, 175, 26, 0.18);
+      }
+
+      .btn:focus-visible {
+        outline: 3px solid var(--ap-gold);
+        outline-offset: 3px;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+        background-position: 100% 0;
+      }
+
+      .btn:active {
+        transform: translateY(0);
+        box-shadow: 0 8px 20px rgba(11, 54, 74, 0.12);
+      }
+
+      /* --------------------------------
+         COMPONENT: HERO
+      ----------------------------------*/
+      .hero {
+        margin: 0;
+        padding: clamp(36px, 5vw, 72px) 0;
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        min-height: clamp(380px, 60vh, 560px);
+        background:
+          linear-gradient(180deg, rgba(11, 54, 74, 0.62), rgba(11, 54, 74, 0.68)),
+          linear-gradient(135deg, rgba(252, 175, 26, 0.14), rgba(152, 216, 226, 0.12)),
+          url("https://images.unsplash.com/photo-1509099836639-18ba02e2e38e?auto=format&fit=crop&w=2000&q=80");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        color: #fff;
+        position: relative;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 15% 20%, rgba(252, 175, 26, 0.14), transparent 38%),
+          radial-gradient(circle at 85% 12%, rgba(152, 216, 226, 0.14), transparent 36%);
+        pointer-events: none;
+      }
+
+      .hero__inner {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: clamp(1100px, 82vw, 1280px);
+        margin: 0 auto;
+        padding: 0 clamp(1rem, 3vw, 3rem);
+      }
+
+      .hero__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        align-items: start;
+      }
+
+      .hero__text {
+        max-width: 880px;
+      }
+
+      .hero__eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--ap-gold);
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-size: 0.95rem;
+      }
+
+      .hero__eyebrow::before {
+        content: "";
+        display: inline-block;
+        width: clamp(40px, 6vw, 72px);
+        height: 3px;
+        background: var(--ap-gold);
+      }
+
+      .hero__title {
+        font-family: "Space Grotesk", "Inter", sans-serif;
+        font-size: clamp(2.4rem, 4vw, 3.6rem);
+        line-height: 1.12;
+        margin: 12px 0 16px;
+        color: #fff;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .hero__title::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: clamp(90px, 12vw, 140px);
+        height: 4px;
+        border-radius: 999px;
+        background: linear-gradient(120deg, var(--ap-gold), var(--ap-rose));
+      }
+
+      .hero__description {
+        margin: 0 0 28px;
+        color: rgba(255, 255, 255, 0.88);
+        font-size: clamp(1.05rem, 0.8vw + 0.95rem, 1.18rem);
+        max-width: 880px;
+      }
+
+      .hero__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-16);
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: var(--space-12);
+      }
+
+      .hero__list {
+        margin: 0 0 var(--space-16);
+        padding-left: var(--space-32);
+        display: grid;
+        gap: var(--space-12);
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 600;
+        line-height: 1.6;
+        list-style: disc;
+      }
+
+      /* --------------------------------
+         COMPONENT: SECTION
+      ----------------------------------*/
+      .section {
+        background: var(--ap-white);
+        border-radius: var(--r-lg);
+        border: 1px solid var(--ap-border);
+        box-shadow: var(--shadow);
+        padding: clamp(20px, 3vw, 32px);
+      }
+
+      .section--soft {
+        background: #eff0ed;
+      }
+
+      .section--warm {
+        background: linear-gradient(135deg, #fff4d9 0%, #f7fbff 100%);
+      }
+
+      .section__title {
+        margin: 0 0 8px;
+        font-size: clamp(1.7rem, 2vw + 1rem, 2.25rem);
+        font-weight: 800;
+        color: var(--ap-slate);
+      }
+
+      .section__text {
+        margin: 0 0 16px;
+        color: var(--ap-muted);
+        font-size: clamp(1rem, 0.5vw + 0.95rem, 1.08rem);
+      }
+
+      /* --------------------------------
+         COMPONENT: STATS
+      ----------------------------------*/
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 14px;
+      }
+
+      .stats__card {
+        background: var(--ap-soft);
+        border-radius: var(--r-md);
+        border: 1px solid var(--ap-border);
+        padding: 16px;
+        box-shadow: var(--shadow);
+      }
+
+      .stats__value {
+        display: block;
+        font-size: clamp(1.35rem, 1vw + 1rem, 1.9rem);
+        color: var(--ap-slate);
+      }
+
+      .stats__label {
+        color: var(--ap-muted);
+        font-size: clamp(0.95rem, 0.4vw + 0.9rem, 1.05rem);
+      }
+
+      /* --------------------------------
+         COMPONENT: CARDS
+      ----------------------------------*/
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: clamp(14px, 2vw, 18px);
+      }
+
+      .card {
+        background: var(--ap-white);
+        border: 1px solid var(--ap-border);
+        border-radius: var(--r-md);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .card__image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+      }
+
+      .card__body {
+        padding: 16px 18px 20px;
+      }
+
+      .card__actions {
+        margin-top: var(--space-16);
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-12);
+      }
+
+      .card__title {
+        margin: 0 0 6px;
+        font-size: clamp(1.05rem, 0.6vw + 1rem, 1.25rem);
+        color: var(--ap-slate);
+      }
+
+      .card__text {
+        margin: 0;
+        color: var(--ap-muted);
+        font-size: clamp(0.98rem, 0.4vw + 0.9rem, 1.05rem);
+      }
+
+      .card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-2);
+        border-color: var(--ap-gold);
+      }
+
+      /* --------------------------------
+         COMPONENT: CTA PANEL
+      ----------------------------------*/
+      .cta-panel {
+        margin-top: 16px;
+        padding: 16px 18px;
+        border-radius: var(--r-md);
+        background: #fff;
+        border: 1px solid var(--ap-border);
+        display: flex;
+        gap: var(--space-16);
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .cta-panel__text {
+        margin: 0;
+        color: var(--ap-text);
+        font-weight: 600;
+      }
+
+      /* --------------------------------
+         COMPONENT: STEPS
+      ----------------------------------*/
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 14px;
+      }
+
+      .steps__item {
+        padding: 16px;
+        background: var(--ap-soft);
+        border-radius: var(--r-md);
+        border: 1px solid var(--ap-border);
+        box-shadow: var(--shadow);
+      }
+
+      .steps__number {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--ap-gold), var(--ap-gold-2));
+        color: var(--ap-slate);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        margin-bottom: 10px;
+      }
+
+      .steps__title {
+        margin: 0 0 6px;
+        font-size: clamp(1rem, 0.5vw + 0.95rem, 1.12rem);
+        color: var(--ap-slate);
+      }
+
+      .steps__text {
+        margin: 0;
+        color: var(--ap-muted);
+        font-size: clamp(0.98rem, 0.4vw + 0.9rem, 1.05rem);
+      }
+
+      /* --------------------------------
+         COMPONENT: TESTIMONIALS CAROUSEL
+      ----------------------------------*/
+      .testimonials {
+        display: grid;
+        gap: var(--space-16);
+      }
+
+      .testimonials__slider {
+        display: flex;
+        align-items: stretch;
+        gap: var(--space-24);
+        overflow-x: auto;
+        overflow-y: hidden;
+        margin-bottom: 1.2rem;
+        scroll-snap-type: x mandatory;
+        padding: 0.75rem 0.75rem 0.85rem;
+        background: #fff;
+        border: 1px solid var(--ap-border);
+        border-radius: var(--r-lg);
+        box-shadow: var(--shadow);
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .testimonials__slider::-webkit-scrollbar {
+        display: none;
+      }
+
+      .testimonial {
+        flex: 0 0 calc((100% - (var(--space-24) * 2)) / 3);
+        min-width: 280px;
+        background: #fff;
+        color: var(--ap-text);
+        padding: 2rem 1.5rem;
+        border-radius: var(--r-lg);
+        box-shadow: 0 12px 26px rgba(11, 54, 74, 0.08);
+        opacity: 0.88;
+        transform: translateY(2px);
+        transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        outline: none;
+        scroll-snap-align: center;
+        border: 1px solid var(--ap-border);
+        font-size: clamp(0.98rem, 0.4vw + 0.9rem, 1.05rem);
+      }
+
+      .testimonial--active,
+      .testimonial:focus {
+        opacity: 1;
+        transform: translateY(0);
+        box-shadow: 0 16px 36px rgba(11, 54, 74, 0.12);
+        border-color: rgba(252, 175, 26, 0.6);
+      }
+
+      .testimonial__cite {
+        display: block;
+        margin-top: 1.2rem;
+        font-size: 1rem;
+        color: var(--ap-muted);
+        font-weight: 700;
+      }
+
+      .testimonials__controls {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        gap: var(--space-12);
+      }
+
+      .slider-btn {
+        background: #fff;
+        color: var(--ap-slate);
+        border: 1px solid var(--ap-border);
+        border-radius: 999px;
+        padding: 0.55rem 1.1rem;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+      }
+
+      .slider-btn:hover {
+        background: var(--ap-gold);
+        border-color: var(--ap-gold-2);
+        color: var(--ap-slate);
+        transform: translateY(-2px);
+      }
+
+      /* --------------------------------
+         COMPONENT: MODAL
+      ----------------------------------*/
+      .modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(16px, 4vw, 32px);
+        background: rgba(26, 36, 51, 0.55);
+        backdrop-filter: blur(6px);
+        z-index: 20;
+      }
+
+      .modal--open {
+        display: flex;
+      }
+
+      .modal__dialog {
+        width: min(720px, 100%);
+        background: linear-gradient(180deg, var(--ap-white), var(--ap-soft));
+        border-radius: var(--r-lg);
+        box-shadow: var(--shadow-2);
+        border: 1px solid var(--ap-border);
+        border-top: 6px solid var(--ap-gold);
+        padding: clamp(24px, 4vw, 32px);
+        display: grid;
+        gap: var(--space-20, 20px);
+      }
+
+      .modal__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--space-12);
+        padding-bottom: var(--space-12);
+        border-bottom: 1px solid var(--ap-border);
+      }
+
+      .modal__eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: var(--ap-soft);
+        color: var(--ap-slate);
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+      }
+
+      .modal__title {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: clamp(1.4rem, 2vw + 1rem, 1.8rem);
+        color: var(--ap-slate);
+        line-height: 1.3;
+        margin: 4px 0 0;
+      }
+
+      .modal__close {
+        background: transparent;
+        border: none;
+        color: var(--ap-slate);
+        font-size: 1.3rem;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: var(--r-sm);
+        transition: background var(--transition), transform var(--transition);
+      }
+
+      .modal__close:hover {
+        background: var(--ap-soft);
+        transform: translateY(-1px);
+      }
+
+      .modal__body {
+        display: grid;
+        gap: var(--space-16);
+        color: var(--ap-muted);
+        padding-bottom: var(--space-16);
+        border-bottom: 1px solid var(--ap-border);
+      }
+
+      .modal__body p {
+        margin: 0;
+      }
+
+      .modal__lead {
+        color: var(--ap-text);
+        font-weight: 600;
+        line-height: 1.7;
+      }
+
+      .modal__highlight {
+        padding: var(--space-20, 20px);
+        background: linear-gradient(135deg, rgba(252, 175, 26, 0.16), rgba(11, 54, 74, 0.04));
+        border-radius: var(--r-md);
+        border: 1px solid var(--ap-border);
+        color: var(--ap-text);
+        font-weight: 600;
+        line-height: 1.6;
+      }
+
+      .modal__list {
+        margin: 0;
+        padding-left: var(--space-40, 40px);
+        display: grid;
+        gap: var(--space-8);
+        color: var(--ap-muted);
+        list-style: disc;
+      }
+
+      .modal__list li {
+        line-height: 1.6;
+      }
+
+      .modal__call {
+        display: block;
+        margin: 0 0 clamp(20px, 3vw, 32px);
+        color: var(--ap-text);
+        font-weight: 600;
+        line-height: 1.6;
+        padding-bottom: var(--space-12);
+      }
+
+      .modal__note {
+        padding: var(--space-20, 20px);
+        border-radius: var(--r-md);
+        background: var(--ap-deck);
+        border: 1px solid var(--ap-border-soft);
+        color: var(--ap-slate-2);
+        font-size: 0.98rem;
+        line-height: 1.55;
+        margin-top: var(--space-16);
+      }
+
+      .modal__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-16);
+        justify-content: flex-end;
+        padding-top: var(--space-12);
+      }
+
+      .modal__actions .btn {
+        padding: 10px 16px;
+        min-width: 140px;
+        font-size: 0.95rem;
+        box-shadow: 0 8px 18px rgba(11, 54, 74, 0.12);
+      }
+
+      .modal__actions .btn--primary {
+        box-shadow: 0 12px 28px rgba(252, 175, 26, 0.32);
+      }
+
+      .modal__actions .btn--ghost {
+        border-width: 1px;
+        box-shadow: 0 8px 14px rgba(11, 54, 74, 0.08);
+      }
+
+      /* --------------------------------
+         MEDIA QUERIES (MOBILE-FIRST)
+      ----------------------------------*/
+      @media (min-width: 480px) {
+        .hero__media {
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+      }
+
+      @media (min-width: 768px) {
+        .hero {
+          padding: clamp(28px, 4vw, 56px);
+        }
+        .hero__media {
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .hero__grid {
+          grid-template-columns: 1.1fr 0.9fr;
+          align-items: stretch;
+        }
+        .hero__image {
+          aspect-ratio: 5 / 4;
+        }
+      }
+
+      @media (min-width: 1280px) {
+        .stack {
+          gap: clamp(56px, 5vw, 80px);
+        }
+        .hero__title {
+          font-size: clamp(2.4rem, 2vw + 1rem, 3.2rem);
+        }
+      }
+
+      @media (min-width: 1536px) {
+        .layout {
+          width: min(1320px, 100% - clamp(48px, 5vw, 72px));
+        }
+        .card-grid {
+          gap: 20px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      /* --------------------------------
+         COMPONENT: STICKY CTA (MOBILE)
+      ----------------------------------*/
+      .sticky-cta {
+        position: sticky;
+        bottom: 0;
+        inset-inline: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-12);
+        padding: 12px clamp(1rem, 4vw, 2rem);
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(8px);
+        border-top: 1px solid var(--ap-border);
+        box-shadow: 0 -8px 24px rgba(11, 54, 74, 0.08);
+      }
+
+      .sticky-cta .btn {
+        width: 100%;
+      }
+
+      @media (min-width: 768px) {
+        .sticky-cta {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="layout">
+        <div class="stack">
+          <section class="hero" aria-labelledby="hero-title">
+            <div class="hero__inner">
+              <div class="hero__grid">
+                <div class="hero__text">
+                  <span class="hero__eyebrow">About Advance Pathways</span>
+                  <h1 id="hero-title" class="hero__title">Helping Aurora move forward—one gift, one guest, one step at a time.</h1>
+                  <p class="hero__description">
+                    The Navigation Campus unites housing, recovery, and work under one roof so motivated adults can rebuild stability
+                    with dignity, accountability, and opportunity.
+                  </p>
+                  <ul class="hero__list">
+                    <li><strong>255-room hotel</strong> converted into a multi-tiered campus.</li>
+                    <li><strong>Coordinated housing, recovery, and workforce</strong> under one roof.</li>
+                    <li><strong>Built so motivated adults</strong> can move up a clear pathway.</li>
+                  </ul>
+                  <div class="hero__actions">
+                    <a class="btn btn--primary" href="/donate" aria-label="Donate online via the donate page">Donate online</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section section--soft" aria-labelledby="impact-heading">
+            <h2 id="impact-heading" class="section__title">Impact snapshot</h2>
+            <p class="section__text">Evidence that your support moves fast and stays personal.</p>
+            <div class="stats">
+              <div class="stats__card">
+                <strong class="stats__value">1,200+</strong>
+                <span class="stats__label">Warm meals served last quarter.</span>
+              </div>
+              <div class="stats__card">
+                <strong class="stats__value">58</strong>
+                <span class="stats__label">Employment meetings facilitated each month.</span>
+              </div>
+              <div class="stats__card">
+                <strong class="stats__value">92%</strong>
+                <span class="stats__label">Families stabilize housing after engaging with our teams.</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="section section--warm" id="donations" aria-labelledby="donations-heading">
+            <h2 id="donations-heading" class="section__title">Immediate donation needs</h2>
+            <p class="section__text">Bring these essentials—every item moves quickly to guests and program spaces.</p>
+            <div class="card-grid">
+              <article class="card">
+                <img
+                  class="card__image"
+                  src="https://advancepathways.org/wp-content/uploads/2025/11/nature-zen-ZSNPbTXBVjw-unsplash-scaled.jpg"
+                  alt="Healthy snacks assortment"
+                />
+                <div class="card__body">
+                  <h3 class="card__title">Healthy Snacks</h3>
+                  <p class="card__text">Nutrition bars and packaged snacks — we can use 1,000!</p>
+                </div>
+              </article>
+              <article class="card">
+                <img
+                  class="card__image"
+                  src="https://images.unsplash.com/photo-1597843797221-e34b4a320b97?auto=format&fit=crop&q=80&w=800"
+                  alt="Pairs of socks"
+                />
+                <div class="card__body">
+                  <h3 class="card__title">Socks</h3>
+                  <p class="card__text">New pairs for men and women to provide comfort and warmth.</p>
+                </div>
+              </article>
+              <article class="card">
+                <img
+                  class="card__image"
+                  src="https://plus.unsplash.com/premium_photo-1671030274122-b6ac34f87b8b?auto=format&fit=crop&q=80&w=800"
+                  alt="Winter coats hanging"
+                />
+                <div class="card__body">
+                  <h3 class="card__title">Winter Coats</h3>
+                  <p class="card__text">Warm outerwear to help our community through cold months.</p>
+                </div>
+              </article>
+              <article class="card">
+                <img
+                  class="card__image"
+                  src="https://images.unsplash.com/photo-1608680582325-9f701aef1bb0?auto=format&fit=crop&q=80&w=800"
+                  alt="Folded clothing"
+                />
+                <div class="card__body">
+                  <h3 class="card__title">Clothing</h3>
+                  <p class="card__text">Casual and durable clothing for both men and women.</p>
+                </div>
+              </article>
+              <article class="card">
+                <img
+                  class="card__image"
+                  src="https://plus.unsplash.com/premium_photo-1726761692986-6bcde87fc2b8?auto=format&fit=crop&q=80&w=800"
+                  alt="Dog food bowl"
+                />
+                <div class="card__body">
+                  <h3 class="card__title">Dog Food</h3>
+                  <p class="card__text">Help our guests care for their beloved animal companions.</p>
+                </div>
+              </article>
+              <article class="card">
+                <img
+                  class="card__image"
+                  src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=800&q=80"
+                  alt="Car parked outdoors"
+                />
+                <div class="card__body">
+                  <h3 class="card__title">Vehicle Donations</h3>
+                  <p class="card__text">Donate a car to fund transportation and campus operations for guests.</p>
+                  <div class="card__actions">
+                    <button class="btn btn--ghost" type="button" data-modal-open="vehicle-modal">More info</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="cta-panel">
+              <p class="cta-panel__text">Questions about items or drop-offs? Contact <strong>Ginger Aber</strong>.</p>
+              <a class="btn btn--primary" href="mailto:gingera@advancepathways.org">Email gingera@advancepathways.org</a>
+            </div>
+            <p class="section__text" aria-label="Additional donation options">
+              Looking to give financially or donate a vehicle?
+              <a href="/donate" aria-label="Visit donate page">Visit our donate page</a>.
+            </p>
+          </section>
+
+          <section class="section section--soft" id="volunteer" aria-labelledby="volunteer-heading">
+            <h2 id="volunteer-heading" class="section__title">Volunteer opportunities</h2>
+            <p class="section__text">Serve in roles guests feel immediately—no experience required, just a steady presence.</p>
+            <div class="card-grid">
+              <article class="card">
+                <img
+                  class="card__image"
+                  src="https://plus.unsplash.com/premium_photo-1669532597232-e540bc04b657?auto=format&fit=crop&q=80&w=800"
+                  alt="Clothing bank shelves"
+                />
+                <div class="card__body">
+                  <h3 class="card__title">Clothing Bank</h3>
+                  <p class="card__text">Organize clothing donations and help distribute them to guests.</p>
+                </div>
+              </article>
+              <article class="card">
+                <img
+                  class="card__image"
+                  src="https://images.unsplash.com/photo-1560265036-021b3652b490?auto=format&fit=crop&q=80&w=800"
+                  alt="Welcome desk"
+                />
+                <div class="card__body">
+                  <h3 class="card__title">Welcome Center</h3>
+                  <p class="card__text">Welcome and greet guests, offering a warm first impression.</p>
+                </div>
+              </article>
+              <article class="card">
+                <img
+                  class="card__image"
+                  src="https://images.unsplash.com/photo-1629904853716-f0bc54eea481?auto=format&fit=crop&q=80&w=800"
+                  alt="Computer lab"
+                />
+                <div class="card__body">
+                  <h3 class="card__title">Computer Lab</h3>
+                  <p class="card__text">Assist guests in learning basic computer skills and digital literacy.</p>
+                </div>
+              </article>
+              <article class="card">
+                <img
+                  class="card__image"
+                  src="https://images.unsplash.com/photo-1540909944144-e69c7c9c28df?auto=format&fit=crop&q=80&w=800"
+                  alt="Mail room area"
+                />
+                <div class="card__body">
+                  <h3 class="card__title">Mail Room</h3>
+                  <p class="card__text">Sort and distribute mail to our unhoused community members.</p>
+                </div>
+              </article>
+            </div>
+            <div class="cta-panel">
+              <p class="cta-panel__text">Ready to jump in? Contact <strong>Ginger Aber</strong> to schedule a shift.</p>
+              <a class="btn btn--primary" href="mailto:gingera@advancepathways.org">Email gingera@advancepathways.org</a>
+            </div>
+          </section>
+
+          <section class="section section--warm" aria-labelledby="flow-heading">
+            <h2 id="flow-heading" class="section__title">How your support flows</h2>
+            <p class="section__text">Clear steps so you always know where your time and gifts land.</p>
+            <div class="steps">
+              <div class="steps__item">
+                <div class="steps__number">1</div>
+                <h3 class="steps__title">Pledge or drop off</h3>
+                <p class="steps__text">Funds, gear, and meals arrive at the Navigation Campus or through partners.</p>
+              </div>
+              <div class="steps__item">
+                <div class="steps__number">2</div>
+                <h3 class="steps__title">Staff activation</h3>
+                <p class="steps__text">Resources are assigned within 48 hours; shifts and outreach updates go live.</p>
+              </div>
+              <div class="steps__item">
+                <div class="steps__number">3</div>
+                <h3 class="steps__title">Guest experience</h3>
+                <p class="steps__text">Guests receive essentials, coaching, and follow-ups to stay on track.</p>
+              </div>
+              <div class="steps__item">
+                <div class="steps__number">4</div>
+                <h3 class="steps__title">Results shared</h3>
+                <p class="steps__text">Quarterly stories and metrics highlight the impact you made possible.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="section section--soft testimonials" aria-labelledby="stories-heading" id="stories">
+            <h2 id="stories-heading" class="section__title">Stories from the floor</h2>
+            <p class="section__text">Donors, partners, and volunteers powering Advance Pathways.</p>
+            <div class="testimonials__slider" id="storiesSlider">
+              <article class="testimonial testimonial--active" tabindex="0">
+                <p>“When our coffee shop team donated winter kits, guests could focus on warmth and conversations.”</p>
+                <span class="testimonial__cite">— Sade, Neighborhood Partner</span>
+              </article>
+              <article class="testimonial" tabindex="-1">
+                <p>“The workforce lab is immaculate because donors underwrite equipment and hopeful workshops.”</p>
+                <span class="testimonial__cite">— Malik, Employment Coach</span>
+              </article>
+              <article class="testimonial" tabindex="-1">
+                <p>“Advance Pathways proved how meaningful monthly gifts are for long-term case work.”</p>
+                <span class="testimonial__cite">— Dee, Monthly Partner</span>
+              </article>
+            </div>
+            <div class="testimonials__controls">
+              <button class="slider-btn prev" aria-label="Previous story">&lt;</button>
+              <button class="slider-btn next" aria-label="Next story">&gt;</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <div class="modal" id="vehicle-modal" role="dialog" aria-modal="true" aria-labelledby="vehicle-modal-title">
+      <div class="modal__dialog">
+        <div class="modal__header">
+          <div>
+            <h2 id="vehicle-modal-title" class="modal__title">Vehicle Donation</h2>
+          </div>
+          <button class="modal__close" type="button" aria-label="Close vehicle donation details" data-modal-close>&times;</button>
+        </div>
+        <div class="modal__body">
+          <div class="modal__highlight" style="margin-bottom: 15px;">
+            Donating your vehicle powers pathways to recovery that build self-esteem, dignity, and independence for people
+            experiencing homelessness.
+          </div>
+          <p class="modal__lead">
+            Advance Pathways helps individuals focus on recovery from harmful behaviors while gaining livable-wage employment
+            to move into independent housing. We focus on the whole-person approach to rebounding from homelessness and
+            achieving the highest level of self-sufficiency.
+          </p>
+          <ul class="modal__list">
+            <li>Clear title and keys are all you need. We accept cars, trucks, and motorcycles—any condition.</li>
+            <li>Free towing is provided, and your donation is tax-deductible.</li>
+            <li>80% of net proceeds support Advance Pathways; 20% supports Step Denver’s mission.</li>
+            <li>You may claim a charitable deduction for the gross sale of your vehicle. Please consult your tax professional.</li>
+          </ul>
+        <p class="modal__call" style="margin:15px 0px 15px 0px;">
+          Call <a href="tel:7204572538">(720) 457-2538</a> for more information or click below to donate today.
+        </p>
+          <div class="modal__note">
+            Please Note: Your donation will be processed by Driven 2 Donate (Step Denver, 501c3). Documentation and legal
+            details are handled by them. Advance Pathways is the beneficiary of your gift and grateful for your support.
+          </div>
+        </div>
+        <div class="modal__actions">
+          <a class="btn btn--primary" style="margin-right: 15px;" href="https://driven2donate.org/" target="_blank" rel="noreferrer">Donate</a>
+          <button class="btn btn--ghost" type="button" data-modal-close>Close</button>
+        </div>
+      </div>
+    </div>
+    <div class="sticky-cta" aria-label="Quick donate and volunteer actions">
+      <a
+        class="btn btn--primary"
+        href="mailto:gingera@advancepathways.org?subject=Donation%20Drop-off%20Details"
+        aria-label="Email Ginger Aber for donation drop-off details"
+      >
+        Donate items
+      </a>
+      <a
+        class="btn btn--ghost"
+        href="mailto:gingera@advancepathways.org?subject=Volunteer%20Interest%20-%20Navigation%20Campus"
+        aria-label="Email Ginger Aber about volunteer roles"
+      >
+        Volunteer
+      </a>
+    </div>
+    <script>
+      (() => {
+        const modal = document.getElementById("vehicle-modal");
+        if (!modal) return;
+        const openers = document.querySelectorAll("[data-modal-open='vehicle-modal']");
+        const closers = modal.querySelectorAll("[data-modal-close]");
+        const dialog = modal.querySelector(".modal__dialog");
+        const toggleModal = (show) => {
+          modal.classList.toggle("modal--open", show);
+          if (show) {
+            modal.querySelector(".modal__close")?.focus();
+          }
+        };
+        openers.forEach((btn) => btn.addEventListener("click", () => toggleModal(true)));
+        closers.forEach((btn) => btn.addEventListener("click", () => toggleModal(false)));
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) toggleModal(false);
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && modal.classList.contains("modal--open")) toggleModal(false);
+        });
+        dialog?.addEventListener("click", (e) => e.stopPropagation());
+      })();
+
+      (() => {
+        const slider = document.getElementById("storiesSlider");
+        if (!slider) return;
+        const slides = Array.from(slider.children);
+        const prev = document.querySelector(".testimonials__controls .prev");
+        const next = document.querySelector(".testimonials__controls .next");
+        let index = 0;
+
+        const getGap = () => {
+          const cs = getComputedStyle(slider);
+          return parseFloat(cs.columnGap || cs.gap || "16");
+        };
+
+        const setIndex = (i) => {
+          const maxIndex = slides.length - 1;
+          index = Math.max(0, Math.min(i, maxIndex));
+          const slideWidth = slides[0].getBoundingClientRect().width;
+          const target = index * (slideWidth + getGap());
+          slider.scrollTo({ left: target, behavior: "smooth" });
+          slides.forEach((s, idx) => {
+            s.classList.toggle("testimonial--active", idx === index);
+            s.setAttribute("tabindex", idx === index ? "0" : "-1");
+          });
+        };
+
+        if (prev && next) {
+          prev.addEventListener("click", () => setIndex(index - 1));
+          next.addEventListener("click", () => setIndex(index + 1));
+        }
+
+        slider.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowRight") {
+            setIndex(index + 1);
+          } else if (e.key === "ArrowLeft") {
+            setIndex(index - 1);
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

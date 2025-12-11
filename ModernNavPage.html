@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advance Pathways | Modern Nav</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ap-navy: #0b364a;
+        --ap-gold: #fcaf1a;
+        --ap-teal: #98d8e2;
+        --ap-light: #eff0ed;
+        --ap-text: #0b364a;
+        --ap-muted: rgba(11, 54, 74, 0.72);
+        --r-md: 16px;
+        --shadow: 0 18px 48px rgba(11, 54, 74, 0.12);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: radial-gradient(circle at 12% 18%, rgba(152, 216, 226, 0.1), transparent 32%), var(--ap-light);
+        color: var(--ap-text);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* NAV */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: var(--ap-navy);
+        backdrop-filter: blur(14px);
+        border-bottom: 2px solid rgba(252, 175, 26, 0.35);
+        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
+        transition: padding 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-bottom-color 0.2s ease;
+      }
+
+      .nav__inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 39px clamp(1.7rem, 3.8vw, 3.8rem);
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        transition: padding 0.2s ease;
+      }
+
+      .nav__brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .nav__brand img {
+        height: 52px;
+        max-height: 52px;
+        width: auto;
+        display: block;
+        padding: 8px 12px;
+        background: linear-gradient(135deg, rgba(252, 175, 26, 0.35), rgba(152, 216, 226, 0.32)), #fff;
+        border: 1px solid rgba(11, 54, 74, 0.12);
+        border-radius: 14px;
+        box-shadow:
+          0 12px 22px rgba(11, 54, 74, 0.18),
+          0 1px 3px rgba(255, 255, 255, 0.6) inset;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      }
+
+      .nav__brand:hover img,
+      .nav__brand:focus-visible img {
+        transform: translateY(-1px);
+        box-shadow:
+          0 16px 26px rgba(11, 54, 74, 0.24),
+          0 1px 3px rgba(255, 255, 255, 0.7) inset,
+          0 0 0 2px rgba(252, 175, 26, 0.2);
+        outline: none;
+      }
+
+      .nav__title {
+        font-family: "Space Grotesk", "Inter", sans-serif;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 0.02em;
+      }
+
+      .nav__menu {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .nav__link,
+      .nav__dropdown-toggle {
+        position: relative;
+        padding: 10px 12px;
+        color: rgba(255, 255, 255, 0.92);
+        font-weight: 600;
+        border-radius: 12px;
+        transition: color 0.2s ease, transform 0.2s ease;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+      }
+
+      .nav__link--active {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .nav__link::after,
+      .nav__dropdown-toggle::after {
+        content: "";
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        bottom: 6px;
+        height: 2px;
+        background: linear-gradient(135deg, var(--ap-gold), var(--ap-teal));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.2s ease;
+        opacity: 0.85;
+      }
+
+      .nav__link:hover,
+      .nav__link:focus-visible,
+      .nav__dropdown-toggle:hover,
+      .nav__dropdown-toggle:focus-visible {
+        color: #fff;
+        outline: none;
+        transform: translateY(-1px);
+      }
+
+      .nav__link:hover::after,
+      .nav__link:focus-visible::after,
+      .nav__dropdown-toggle:hover::after,
+      .nav__dropdown-toggle:focus-visible::after {
+        transform: scaleX(1);
+      }
+
+      .nav__link--cta {
+        background: linear-gradient(135deg, var(--ap-gold), var(--ap-teal));
+        color: var(--ap-navy);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 10px 24px rgba(252, 175, 26, 0.35);
+      }
+
+      .nav__dropdown {
+        position: relative;
+      }
+
+      .nav__dropdown-menu {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        min-width: 380px;
+        max-width: 520px;
+        background: #fff;
+        color: var(--ap-text);
+        border-radius: 16px;
+        border: 1px solid rgba(11, 54, 74, 0.12);
+        box-shadow: 0 16px 28px rgba(0, 0, 0, 0.14);
+        display: none;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 10px 12px;
+        gap: 12px 14px;
+        z-index: 20;
+        pointer-events: auto;
+        font-size: 0.98rem;
+        align-items: start;
+      }
+
+      .nav__dropdown[aria-expanded="true"] .nav__dropdown-menu {
+        display: grid;
+      }
+
+      .nav__dropdown-group {
+        display: grid;
+        gap: 8px;
+        align-content: start;
+      }
+
+      .nav__dropdown-title {
+        margin: 0 0 2px 0;
+        font-weight: 800;
+        color: var(--ap-text);
+        font-size: 1.02rem;
+        letter-spacing: 0.02em;
+      }
+
+      .nav__dropdown-group + .nav__dropdown-group {
+        border-left: 1px solid rgba(11, 54, 74, 0.06);
+        padding-left: 12px;
+      }
+
+      .nav__dropdown-menu a {
+        padding: 7px 9px;
+        border-radius: 8px;
+        color: var(--ap-text);
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        line-height: 1.3;
+        background: transparent;
+        transition: background 0.15s ease, color 0.15s ease;
+      }
+
+      .nav__dropdown-menu a:hover,
+      .nav__dropdown-menu a:focus-visible {
+        background: rgba(11, 54, 74, 0.04);
+        outline: none;
+      }
+
+      .nav__toggle {
+        display: none;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #fff;
+        padding: 10px 12px;
+        border-radius: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+      }
+
+      .nav__menu--mobile {
+        display: none;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+        background: rgba(11, 54, 74, 0.96);
+        width: 100%;
+      }
+
+      .nav__menu--mobile .nav__link {
+        width: 100%;
+      }
+
+      .nav__section-label {
+        color: rgba(255, 255, 255, 0.65);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 8px 0 4px;
+      }
+
+      .nav__mobile-call {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 8px;
+      }
+
+      .nav--scrolled {
+        background: var(--ap-navy);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      .nav--scrolled .nav__inner {
+        padding-top: 33px;
+        padding-bottom: 33px;
+      }
+
+      /* HERO */
+      .hero {
+        padding: clamp(36px, 6vw, 88px) clamp(1.25rem, 4vw, 3rem);
+        max-width: 1220px;
+        margin: 0 auto;
+        display: grid;
+        gap: 16px;
+      }
+
+      .hero__eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--ap-gold);
+        font-weight: 800;
+      }
+
+      .hero__title {
+        font-family: "Space Grotesk", "Inter", sans-serif;
+        font-size: clamp(2.2rem, 4vw, 3.2rem);
+        margin: 0;
+        color: var(--ap-navy);
+      }
+
+      .hero__text {
+        margin: 0;
+        color: var(--ap-muted);
+        font-size: clamp(1rem, 0.5vw + 0.95rem, 1.1rem);
+      }
+
+      .hero__actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      @media (max-width: 960px) {
+        .nav__menu {
+          display: none;
+        }
+        .nav__toggle {
+          display: inline-flex;
+          margin-left: auto;
+        }
+        .nav--open .nav__menu--mobile {
+          display: flex;
+          animation: slideDown 0.2s ease;
+        }
+
+        .nav__dropdown-menu {
+          position: static;
+          display: none;
+          flex-direction: column;
+          box-shadow: none;
+          border: 1px solid rgba(255, 255, 255, 0.14);
+          background: rgba(255, 255, 255, 0.06);
+          padding: 8px 10px;
+          min-width: 0;
+          max-width: none;
+          gap: 6px;
+          border-radius: 12px;
+        }
+
+        .nav__dropdown[aria-expanded="true"] .nav__dropdown-menu {
+          display: flex;
+        }
+
+        .nav__dropdown-group {
+          border: none !important;
+          padding: 0;
+          gap: 6px;
+        }
+
+        .nav__dropdown-group + .nav__dropdown-group {
+          border: none;
+          padding: 0;
+        }
+
+        .nav__dropdown-title {
+          color: rgba(255, 255, 255, 0.7);
+        }
+
+        .nav__dropdown-menu a {
+          width: 100%;
+          color: #fff;
+          background: transparent;
+        }
+
+        .nav__dropdown-menu a:hover,
+        .nav__dropdown-menu a:focus-visible {
+          background: rgba(255, 255, 255, 0.12);
+        }
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-6px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav" id="nav">
+      <div class="nav__inner" role="navigation" aria-label="Main navigation">
+        <a class="nav__brand" href="/">
+          <img src="https://advancepathways.org/wp-content/uploads/2025/09/AP-PrimaryLogo-Blue.png" alt="Advance Pathways logo" />
+          <span class="sr-only">Advance Pathways</span>
+        </a>
+        <nav class="nav__menu" aria-label="Primary">
+          <div class="nav__dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="nav__dropdown-toggle nav__link" type="button">Navigation Campus ▾</button>
+            <div class="nav__dropdown-menu">
+              <div class="nav__dropdown-group">
+                <p class="nav__dropdown-title">Programs</p>
+                <a href="#">Day Center</a>
+                <a href="#">Navigation Center</a>
+                <a href="#">Workforce Development</a>
+                <a href="#">Housing Tiers</a>
+                <a href="#">Pet Shelter</a>
+              </div>
+              <div class="nav__dropdown-group">
+                <p class="nav__dropdown-title">Resources</p>
+                <a href="#">Good Neighbor Agreement</a>
+                <a href="#">FAQs</a>
+                <a href="#">Volunteer & Donations</a>
+              </div>
+            </div>
+          </div>
+          <a class="nav__link" href="#">About</a>
+          <a class="nav__link" href="#">Careers</a>
+          <a class="nav__link" href="#">Volunteering</a>
+          <a class="nav__link" href="#">Apply</a>
+          <a class="nav__link nav__link--cta" href="#">Donate</a>
+        </nav>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+      </div>
+      <nav class="nav__menu--mobile" id="mobile-menu" aria-label="Mobile primary">
+        <span class="nav__section-label">Navigation Campus</span>
+        <div class="nav__dropdown" aria-expanded="false">
+          <button class="nav__dropdown-toggle nav__link" type="button" aria-expanded="false">Programs ▾</button>
+          <div class="nav__dropdown-menu">
+            <a href="#">Day Center</a>
+            <a href="#">Navigation Center</a>
+            <a href="#">Workforce Development</a>
+            <a href="#">Housing Tiers</a>
+            <a href="#">Pet Shelter</a>
+          </div>
+        </div>
+        <span class="nav__section-label">Resources</span>
+        <a class="nav__link" href="#">Good Neighbor Agreement</a>
+        <a class="nav__link" href="#">FAQs</a>
+        <a class="nav__link" href="#">Volunteer & Donations</a>
+        <span class="nav__section-label">More</span>
+        <a class="nav__link" href="#">About</a>
+        <a class="nav__link" href="#">Careers</a>
+        <a class="nav__link" href="#">Apply</a>
+        <a class="nav__link nav__link--cta nav__mobile-call" href="tel:7204572538">Call now</a>
+        <a class="nav__link nav__link--cta" style="text-align: center" href="#">Donate</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <span class="hero__eyebrow">Navigation Campus</span>
+        <h1 class="hero__title">Modern, focused navigation to housing and recovery.</h1>
+        <p class="hero__text">
+          Explore programs across Day Center, Workforce, Housing Tiers, and Pet Shelter with a unified experience on mobile and
+          desktop.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#">Explore programs</a>
+          <a class="btn btn--ghost" href="#">Contact us</a>
+        </div>
+      </section>
+    </main>
+    <script>
+      (() => {
+        const nav = document.getElementById("nav");
+        const toggle = nav?.querySelector(".nav__toggle");
+        const mobile = document.getElementById("mobile-menu");
+        const dropdowns = nav?.querySelectorAll(".nav__dropdown");
+        const mobileDropdownToggles = mobile?.querySelectorAll(".nav__dropdown-toggle");
+        if (!toggle || !mobile) return;
+
+        dropdowns?.forEach((dd) => {
+          const btn = dd.querySelector(".nav__dropdown-toggle");
+          btn?.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const expanded = dd.getAttribute("aria-expanded") === "true";
+            dropdowns.forEach((d) => d.setAttribute("aria-expanded", "false"));
+            dd.setAttribute("aria-expanded", expanded ? "false" : "true");
+          });
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!nav.contains(e.target)) {
+            dropdowns?.forEach((d) => d.setAttribute("aria-expanded", "false"));
+            if (nav.classList.contains("nav--open")) {
+              nav.classList.remove("nav--open");
+              toggle.setAttribute("aria-expanded", "false");
+            }
+          }
+        });
+
+        toggle.addEventListener("click", () => {
+          const open = nav.classList.toggle("nav--open");
+          toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+        mobile.querySelectorAll("a").forEach((link) =>
+          link.addEventListener("click", () => {
+            nav.classList.remove("nav--open");
+            toggle.setAttribute("aria-expanded", "false");
+          })
+        );
+
+        mobileDropdownToggles?.forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const expanded = btn.getAttribute("aria-expanded") === "true";
+            btn.setAttribute("aria-expanded", expanded ? "false" : "true");
+            btn.closest(".nav__dropdown")?.setAttribute("aria-expanded", expanded ? "false" : "true");
+          });
+        });
+
+        const setScrollState = () => {
+          const offset = window.scrollY || document.documentElement.scrollTop;
+          if (offset > 12) {
+            nav.classList.add("nav--scrolled");
+          } else {
+            nav.classList.remove("nav--scrolled");
+          }
+        };
+        setScrollState();
+        window.addEventListener("scroll", setScrollState, { passive: true });
+        window.addEventListener("resize", setScrollState);
+      })();
+    </script>
+  </body>
+</html>
